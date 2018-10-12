@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!-- Author: Carmine Infusino
+CSUF CPSC 473-01 Web Front-End Engineering for Internet Applications
+Professor Shen
+Github Link to this file:
+Link to actual webpage: https://www.nytimes.com/subscription/multiproduct/lp8KQBN.html?campaignId=67HX6&gclid=EAIaIQobChMItbTSi_TC3QIVBcNkCh0WlAVqEAAYASAAEgIGIfD_BwE&dclid=CMzyzY30wt0CFQbdYgod1dsImw
+Notes:
+-This is the first time I've used HTML and CSS to create an actual webpage.
+-I found that selecting "flex" for the "display" attribute allowed for easier customization. As such, many of the elements used are flexbox containers.
+-Flexbox may not be supported on certain web browsers.
+-The New York Times website has proprietary fonts that are not used in this assignment.
+-This webpage lacks many features because it only contains HTML and CSS (No JavaScript for backend).
+-Tested on most recent versions of Chrome, Firefox, and Edge as of Oct-12-2018. -->
+
+<html lang="en">
+<!-- BEGINNING OF HEAD:
+Contents:
+-meta
+-link: Adds NY Times logo to tab.
+-title: Adds webpage title to tab.
+-style: CSS to add styling to the contents. -->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="icon" href="https://www.nytimes.com/vi-assets/static-assets/favicon-4bf96cb6a1093748bf5b3c429accb9b4.ico">
+
+  <title>The New York Times: Digital and Home Delivery Subscriptions</title>
+
+  <style type="text/css">
+    .container-0 {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .container-1 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box-1 {
+      padding: 0px;
+      font-size: 16px;
+      font-family: arial;
+    }
+
+    .box-1 p {
+      color: #FFF;
+      background-color: #000;
+      text-align: center;
+      text-decoration: underline;
+      font-weight: bold;
+      margin: 0;
+      padding: 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .box-2 {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      flex-direction: row;
+      font-family: arial;
+    }
+
+    .nav-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .nav-mid {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    .nav-mid a {
+      text-decoration: none;
+      color: #000;
+      padding: 5px;
+    }
+
+    .nav-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav-right a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .box-3 {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      flex-direction: column;
+      background-color: rgb(255, 99, 100);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box-3 ul {
+      list-style: none;
+      list-style-type: none;
+      margin: 0px;
+      padding-top: 70px;
+      padding-bottom: 30px;
+    }
+
+    .box-3-top {
+      color: #FFF;
+      font-size: 35px;
+      font-weight: bolder;
+      font-family: fantasy;
+      text-align: center;
+    }
+
+    .box-3-mid {
+      color: #FFFF00;
+      font-size: 35px;
+      font-family: sans-serif;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 10px;
+    }
+
+    .box-3-bottom {
+      color: #FFF;
+      font-size: 30px;
+      font-weight: lighter;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 70px;
+    }
+
+    .box-4 {
+      font-family: arial;
+      text-align: center;
+      padding-top: 3
+    }
+
+    .container-2 {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      justify-content: center;
+      margin: 30px;
+      padding-left: 5%;
+      font-family: arial;
+    }
+
+    .cont-2-list {
+      list-style: none;
+      text-indent: -20px;
+      margin-left: 20px;
+    }
+
+    .cont-2-list li {
+      padding-bottom: 12px;
+    }
+
+    .cont-2-list li:before {
+      content: '✓ ';
+      font-weight: bold;
+    }
+
+    .box-5 {
+      width: 350px;
+      padding: 0 15px 15px 15px;
+    }
+
+    .box-6 {
+      width: 350px;
+      padding: 0 15px 15px 15px;
+    }
+
+    .box-7 {
+      width: 350px;
+      padding: 0 15px 15px 15px;
+    }
+
+    .aster-notice {
+      color: #858585;
+    }
+
+    .title-tag {
+      color: #FFF;
+      background-color: red;
+      text-transform: uppercase;
+      border-radius: 5px;
+    }
+
+    .cont-2-sub-box {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      width: 100%;
+
+    }
+
+    .cont-2-sub-box h1 {
+      color: #FFF;
+      padding-left: 15px;
+      font-size: 30px;
+      font-weight: lighter;
+    }
+
+    .cont-2-sub-box p {
+      color: #FFF;
+      padding-left: 15px;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .cont-2-sub-box-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+
+    .cont-2-sub-box-btn a {
+      color: #FFF;
+      font-weight: bold;
+      font-size: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-decoration: none;
+    }
+
+    .container-3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      width: 90%;
+      padding-left: 5%;
+      margin: 30px;
+    }
+
+    .container-3 p {
+      font-size: 15px;
+      width: 1050px;
+      color: #858585;
+    }
+
+    .container-4 {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      flex-direction: column;
+      width: 90%;
+      margin: 30px;
+      padding-left: 5%;
+    }
+
+    .container-4 h1 {
+      font-family: arial;
+      font-weight: 100;
+      font-size: 20px;
+      width: 1050px;
+    }
+
+    .box-8 {
+      display: flex;
+      flex-flow: row wrap;
+      width: 1050px;
+      font-family: arial;
+      font-size: 15px;
+      align-self: center;
+    }
+
+    .box-8-sub-box {
+      display: flex;
+      flex-direction: column;
+      background-color: rgb(237, 237, 237);
+      border-radius: 5px;
+      width: 500px;
+      height: 140px;
+      margin: 10px;
+    }
+
+    .box-8-sub-box p {
+      margin-left: 20px;
+      margin-right: 70px;
+      margin-top: 0;
+    }
+
+    .box-8-sub-box strong {
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .box-9 {
+      width: 1050px;
+    }
+
+    .box-9 details summary {
+      color: rgb(48, 131, 236);
+      font-weight: bolder;
+      cursor: pointer;
+    }
+
+    .box-9 details p {
+      margin-left: 100px;
+      font-size: 15px;
+    }
+
+    .faq-btn {
+      color: #FFF;
+      background: rgb(44, 131, 236);
+      border-radius: 5px;
+      margin-top: 15px;
+      width: 125px;
+      height: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 15px;
+      text-decoration: none;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .container-5 {
+      background: #000;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+    }
+
+    .cont-5-col {
+      margin: 30px;
+    }
+
+    .cont-5-col ul {
+      list-style: none;
+      color: #FFF;
+      font-family: arial;
+
+    }
+
+    .cont-5-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .cont-5-col ul li a {
+      color: #FFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<!-- BEGINNING OF BODY:
+Contents:
+-container-0:The over-encompassing container. Flexbox with a column/vertical orientation. Idea is to stack sections of the webpage on top of one another from top to bottom.
+  -container-1: Flexbox with column orientation.
+    -box-1: Flexbox only containing a paragraph element. Center, underlined, bolded text.
+    -box-2: Flexbox with row/horizontal orientation. Idea is to line up elements left to right. Contains NY Times image, "links", and a Log In button
+      -nav-left: Forces the Image to the left.
+      -nav-mid: Centers "links" to different pages.
+      -nav-right: Forces Log In button to the right.
+    -box-3: Flexbox for large, red banner. Contains 3 different sections: top, mid, bottom. Each section has its own formatting.
+    -box-4: Flexbox only containing a paragraph element. Centered and contains "strong" elements for emphasis on certain words.
+  -container-2: Flexbox with row orientation. Idea is to have 3 vertical sections, centered, with equal widths.
+    -box-5, box-6, box-7: Vertical sections containing a flexbox for the "Basic", "All Access", and "All Access + Print" buttons repectively along with unordered lists containing details for each respective option.
+    -container-3: Flexbox only containing a paragraph element. Centered.
+    -container-4: Flexbox with column orientation for two sections: "More Subscription Options" and "Frequently Asked Questions".
+      -"More Subscription Options". Row orientation. Idea is to have 2 vertical columns containing sub-boxes that detail more subscription options.
+      -"Frequently Asked Questions". Column orientation. Idea is to have horizontal sections of "details" elements since they implement a widget that can be toggled to show/hide HTML elements. *Could not change the "details" icon to match "+" and "-" symbols.*
+    -container-5: Flexbox for bottom of webpage. Row orientation. Idea is to have 4 columns of sectons with lists containing links to different NY Times webpages.
+   -->
+
+<body>
+  <div class="container-0">
+    <div class="container-1">
+
+      <div class="box-1">
+        <p>Take The Times to school with special rates.</p>
+      </div>
+
+      <div class="box-2">
+        <div class="nav-left">
+          <img src="https://www.nytco.com/wp-content/themes/nytco/images/nytco/NYT-wordmark.png" width="200">
+        </div>
+        <div class="nav-mid">
+          <a href="#">Why The Times?</a>
+          <a href="#">What You Get</a>
+          <a href="#">Pricing</a>
+          <a href="#">More options</a>
+        </div>
+        <div class="nav-right">
+          <a href="#"><strong>LOG IN</strong></a>
+        </div>
+      </div>
+
+      <div class="box-3">
+        <ul class="box-3-top">
+          <li>Make a difference in today's world.</li>
+          <li>Support independent journalism.</li>
+        </ul>
+        <p class="box-3-mid">Subscribe for $1 a week.</p>
+        <p class="box-3-bottom">Ends today.</p>
+      </div>
+
+      <div class="box-4">
+        <p>Choose between our <strong>Digital</strong> or <strong>Home Delivery</strong> options. You may cancel anytime.</p>
+      </div>
+    </div>
+
+    <div class="container-2">
+      <div class="box-5">
+        <div class="cont-2-sub-box" style="background-color: rgb(45,132,237);">
+          <h1>Basic</h1>
+          <p><strike style="color: rgb(151,194,245)">$3.75</strike> $1.00/week</p>
+          <p><small>for one year</small></p>
+          <div class="cont-2-sub-box-btn" style="background-color: rgb(151,194,245)">
+            <a href="#">GET BASIC</a>
+          </div>
+        </div>
+        <ul class="cont-2-list">
+          <li>Unlimited article access anytime, anywhere on NYTimes.com and in the app.</li>
+          <li>
+            <strong>Subscriber Exclusives</strong><br>
+            Get access to exculeive features and correspondence, like our Notes From the Newsroom newsletter, along with early access to new media releases.
+          </li>
+        </ul>
+      </div>
+
+      <div class="box-6">
+        <div class="cont-2-sub-box" style="background-color: rgb(16,74,147);">
+          <h1>All Access</h1>
+          <p><strike style="color: rgb(135,165,201)">$6.25</strike> $3.13/week</p>
+          <p><small>for one year</small></p>
+          <div class="cont-2-sub-box-btn" style="background-color: rgb(135,165,201)">
+            <a href="#">GET ALL ACCESS</a>
+          </div>
+        </div>
+        <ul class="cont-2-list">
+          <li>Unlimited article access anytime, anywhere on NYTimes.com and in the app.</li>
+          <li>
+            <strong>Subscriber Exclusives</strong><br>
+            Get access to exculeive features and correspondence, like our Notes From the Newsroom newsletter, along with early access to new media releases.
+          </li>
+          <li>
+            <strong>NYT Crossword</strong><br>
+            Play the puzzle for free on any device. Enjoy 20 years of Crossword archives. Solve in minutes with out bite-size mini puzzles.
+          </li>
+          <li>
+            <strong>NYT Cooking</strong><br>
+            Access to the entire NYT Cooking recipe archive. Learn with our how-to cooking guides, and build and organize your personal Recipe Box.
+          </li>
+          <li>
+            <strong>1 Extra Subscription <span class="title-tag">bonus</span></strong><br>
+            One complimentary All Access subsriptions to give to anyone you'd like (a $25/month value).
+          </li>
+        </ul>
+      </div>
+
+      <div class="box-7">
+        <div class="cont-2-sub-box" style="background-color: rgb(44,44,44);">
+          <h1>All Access + Print</h1>
+          <p>As low as <strike style="color: rgb(150,150,150)">$7.25</strike> $3.63/week*</p>
+          <p><small>for one year</small></p>
+          <div class="cont-2-sub-box-btn" style="background-color: rgb(150,150,150)">
+            <a href="#">GET ALL ACCESS + PRINT</a>
+          </div>
+        </div>
+        <ul class="cont-2-list">
+          <li>Unlimited article access anytime, anywhere on NYTimes.com and in the app.</li>
+          <li>
+            <strong>Subscriber Exclusives</strong><br>
+            Get access to exculeive features and correspondence, like our Notes From the Newsroom newsletter, along with early access to new media releases.
+          </li>
+          <li>
+            <strong>NYT Crossword</strong><br>
+            Play the puzzle for free on any device. Enjoy 20 years of Crossword archives. Solve in minutes with out bite-size mini puzzles.
+          </li>
+          <li>
+            <strong>NYT Cooking</strong><br>
+            Access to the entire NYT Cooking recipe archive. Learn with our how-to cooking guides, and build and organize your personal Recipe Box.
+          </li>
+          <li>
+            <strong>2 Extra Subscriptions <span class="title-tag">bonus</span></strong><br>
+            Two complimentary All Access subsriptions to give to anyone you'd like (a $50/month value).
+          </li>
+          <li>
+            <strong>Home Delivery</strong></br>
+            Customized delivery options such as Sunday only, Fri-Sun., weekday delivery or daily delivery. Available in most major markets across the United States.
+          </li>
+          <li>
+            <strong>Times Experiences</strong></br>
+            Engage directly with journalists online, go beyond the year's biggest stories with panel discussions across the country, and enjoy special discounts and behind-the-scenese access to cultural events.
+          </li>
+          <li>
+            <strong>Exclusive Print Editions</strong></br>
+            Receive special print-only features like The New york Times For Kids, sections dedicated to crosswords and puzzles, and panoramic photojournalism stories.<br><br>
+          </li>
+          <small class="aster-notice">* Price based on Sunday delivery in the New York metropolitan area, and varies according to location and frequency. Subscribers receive free All Access Digital witha Home Delivery subsription.</small>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container-3">
+      <p>
+        <strong>No commitment required, cancel anytime.</strong><br>
+        Offer expires 10/1/18, 10 a.m. E.T. Your payment method will automatically be charged in advance every 4 weeks (28 days). As indicated above in each offer, you will be charged the introductory offer rate for the introductory period, and
+        thereafter will be charged the standard rate until you cancel. All subsriptions renew automatically. You can <u>cancel</u> anytime. these offers are not available for current subscribers. Other restrictions and taxes may apply. Offers and
+        pricing are subject to change without notice.
+      </p>
+    </div>
+
+    <div class="container-4">
+      <h1>More Subscription Options</h1>
+      <div class="box-8">
+        <div class="box-8-sub-box">
+          <strong>Special Academeic Rates</strong>
+          <p>
+            Students and educators, subscribe to The New York Times today and save up to 70% on unlimited access to NYTimes.com.<br><br>
+            <a href="#">Go to Academic Rates</a>
+          </p>
+        </div>
+        <div class="box-8-sub-box">
+          <strong>NYT Crossword</strong>
+          <p>
+            Play the Crossword and mini puzzles on any device. Daily puzzles edited by Will shortz, plus 20 years of great puzzles from our archives.<br><br>
+            <a href="#">Get NYT Crossword</a>
+          </p>
+        </div>
+        <div class="box-8-sub-box">
+          <strong>NYT Cooking</strong>
+          <p>
+            Unlimited access to the entire NYT Cooking recipe database with tools to save and organize your favorites in your personal Recipe Box.<br><br>
+            <a href="#">Get NYT Cooking</a>
+          </p>
+        </div>
+        <div class="box-8-sub-box">
+          <strong>Gift Subscriptions</strong>
+          <p>
+            Give the gift of unlimited access to NYTimes.com and the NYT app and save up to 50% on your gift subscription.<br><br><br>
+            <a href="#">Learn More</a>
+          </p>
+        </div>
+        <div class="box-8-sub-box">
+          <strong>Group Subscriptions</strong>
+          <p>
+            Get unlimied NYTimes.com access for organizations, at special group rates.<br><br>
+            <a href="#">Go to Group Subscriptions</a>
+          </p>
+        </div>
+        <h1>Frequently Asked Questions</h1>
+        <div class="box-9">
+          <details>
+            <summary>
+              What is a home delivery subscription? What do I get when I subscribe?
+            </summary>
+            <p>
+              As a home delivery subscriber to The New York Times you enjoy the convenience and reliability of having the printed newspaper delivered to you first thing in the morning. Your subscription includes free Digital Access, which brings you
+              unlimited access to NYTimes.com and full access to the NYT app for smartphones and tablets. You can also share your Digital Access with a family member at no additional charge.
+            </p>
+            <p>
+              Home delivery subscribers also have free access to The New York Times Archive, featuring every article published since 1851; Times Digest, a 10-page summary of the top stories of The Times, emailed daily; and The New York Times Replica
+              Edition, an exact digital replica of the printed paper that you can read online or offline — even when you are not connected to the internet. We also make it easy for you to suspend home delivery service while you’re away on vacation.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              What is a digital subscription? What do I get when I subscribe?
+            </summary>
+            <p>
+              An unlimited New York Times digital subscription provides ongoing access to NYTimes.com from any computer or device, as well as access to the NYT app on portable devices. When you subscribe, you’ll get access to articles and blog
+              posts,
+              as well as video, slide shows and other multimedia features.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Can I get a subscription to NYTimes.com only?
+            </summary>
+            <p>
+              No. A digital subscription package gives you ongoing access to NYTimes.com on any computer or device, plus the NYT app for your smartphone and tablet.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              I get home delivery of the newspaper. Do I get free access?
+            </summary>
+            <p>
+              Yes. Print subscribers to The New York Times get a free Digital Access subscription. This package includes free, unlimited access to NYTimes.com on any device, as well as the NYT app for your smartphone (iPhone® and Android™-powered
+              phones) and your tablet (iPad® and Android-powered tablets). Print subscribers can share Digital Access with a family member. Free, unlimited access is provided to all print subscribers, no matter what type of subscription you have
+              (daily, weekday, Fri.–Sun., etc.). You’ll also qualify for free digital access if your home delivery is provided by a third party (rather than by The New York Times directly). NYTimes home delivery subscriptions do not include e-reader
+              editions or digital versions of The New York Times Crossword.
+            </p>
+            <p>
+              To activate your digital subscription, you’ll need to connect your home delivery subscription to your NYTimes.com account. If you haven’t already done so, visit this page to connect your accounts.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Do you offer subscriptions to organizations?
+            </summary>
+            <p>
+              Certainly. We offer special rates to organizations aiming to provide group access to The Times. Learn more at the group subscriptions home page.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Can I give a gift subscription to The Times?
+            </summary>
+            <p>
+              Yes. The more you give, the more you save — you can give the gift of unlimited access to NYTimes.com and the NYT app and save up to 50% on your gift subscription. Click here.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              What is the cancellation and refund policy?
+            </summary>
+            <p>
+              You can cancel your subscription at any time. When you cancel, we will stop charging your account the following billing cycle. Each billing cycle is four weeks, so your unlimited access will continue for the remainder of the current
+              four-week period.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              What if I don’t want to subscribe — can I still read NYTimes.com for free?
+            </summary>
+            <p>
+              Visitors can enjoy 5 free articles (including blog posts, slide shows and other multimedia features) each calendar month on NYTimes.com, as well as unrestricted access to browse the home page, section fronts, blog fronts and
+              classifieds.
+              Your free, limited access resets every month: at the beginning of each calendar month, you’ll once again be able to view 5 free articles for that month.
+            </p>
+            <p>
+              The NYT app is free to download and install. After downloading the app, you can read 5 articles each month for free. At the beginning of each calendar month, another 5 articles will be available for free.
+            </p>
+            <p>
+              For nonsubscribers, articles from the New York Times archives from 1923 through 1980 are $3.95 each. Views of archived articles outside that date range are free but still count toward the 5-article monthly limit.
+            </p>
+          </details>
+
+        </div>
+        <a href="#" class="faq-btn">VIEW ALL FAQ<a>
+      </div>
+    </div>
+
+    <div class="container-5">
+      <div class="cont-5-col">
+        <ul>
+          <li>
+            <img src="https://kaggle2.blob.core.windows.net/datasets-images/19447/25288/e426b392a14de32985b9db49ba1c1106/data-original.png?t=2018-04-03-03-13-13" width="200">
+          </li>
+          <li>Copyright &copy;2018</li>
+        </ul>
+      </div>
+      <div class="cont-5-col">
+        <ul>
+          <li><strong><a href="#">About</a></strong></li>
+          <li><a href="#">The New York Times Company</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Sale</a></li>
+        </ul>
+      </div>
+      <div class="cont-5-col">
+        <ul>
+          <li><strong><a href="#">Help</a></strong></li>
+          <li><a href="#">Frequently Asked Questions</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Feedback</a></li>
+        </ul>
+      </div>
+      <div class="cont-5-col">
+        <ul>
+          <li><strong><a href="#">Ways to Subscribe</a></strong></li>
+          <li><a href="#">Digitial + Home Delivery</a></li>
+          <li><a href="#">Education Rates</a></li>
+          <li><a href="#">Group Subscriptions</a></li>
+          <li><a href="#">NYT Crossword</a></li>
+          <li><a href="#">Gift Subscriptions</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- END OF WEBPAGE -->
+
+</html>
